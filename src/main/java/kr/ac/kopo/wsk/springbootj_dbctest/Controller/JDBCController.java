@@ -1,4 +1,5 @@
 package kr.ac.kopo.wsk.springbootj_dbctest.Controller;
+
 import kr.ac.kopo.wsk.springbootj_dbctest.domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -44,10 +45,11 @@ public class JDBCController {
         String sql = "select * from person where id = ?";
         Person person = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Person.class), id);
         model.addAttribute("person", person);
-        return "viewPage01_edit01";
+        return "viewPage01_edit";
     }
+
     @PostMapping("/update")
-    public String updateMethod(@ModelAttribute Person person) {
+    public String updateMethod(@ModelAttribute("Person") Person person) {
         String sql = "update person set name = ?, age = ?, email = ? where id = ?";
         Object[] params = {person.getName(), person.getAge(), person.getEmail(), person.getId()};
         int resultCount = jdbcTemplate.update(sql, params);
@@ -55,7 +57,7 @@ public class JDBCController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteMethod(@PathVariable int id) {
+    public String deleteMethod(@PathVariable(name="id") int id) {
         String sql = "delete from person where id = ?";
         int resultCount = jdbcTemplate.update(sql, id);
         return "redirect:/exam01";
