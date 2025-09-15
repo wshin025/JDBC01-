@@ -2,12 +2,12 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
-  <title>First Page(@Querty Tes)</title>
+  <title>First Page(Entity Test)</title>
 </head>
 <body>
 <div align="center">
-  <h2>JPA SpingbootDB @Querty Test</h2>
-  <a th:href="@{/exam03/new}">Add Member Data</a>
+  <h2>JPA SpingbootDB EntityManager Test</h2>
+  <a th:href="@{/exam04/new}">Add Member Data</a>
   <br><br>
   <table border="1" cellpadding="10">
     <tr>
@@ -23,8 +23,8 @@
       <td th:text="${member.age}"></td>
       <td th:text="${member.email}"></td>
       <td>
-        <a th:href="@{'/exam03/edit/' + ${member.id}}">Edit</a>&nbsp;&nbsp;&nbsp;
-        <a th:href="@{'/exam03/delete/' + ${member.id}}">Delete</a>
+        <a th:href="@{'/exam04/edit/' + ${member.id}}">Edit</a>&nbsp;&nbsp;&nbsp;
+        <a th:href="@{'/exam04/delete/' + ${member.id}}">Delete</a>
       </td>
     </tr>
   </table>
